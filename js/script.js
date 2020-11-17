@@ -1,5 +1,29 @@
 window.addEventListener('DOMContentLoaded', function(){
 'use strict';
+//new DIV
+class Options{
+    constructor(height, width, bg, fontSize, textAlign){
+    this.height,
+    this.width,
+    this.bg,
+    this.fontSize,
+    this.textAlign
+    }
+
+    createDiv(){
+        let div = document.querySelector('div');
+        document.body.appendChild(div);
+        let param = `height:${this.height}px; width:${this.width}px; background-color:${this.bg}; font-size:${this.fontSize}px; text-align:${this.textAlign}`;
+        div.style.cssText = param;
+    }
+}
+const item = new Options(300, 350, "red", 14, "center");
+
+item.createDiv();
+
+
+
+
 
 let infoTab = document.querySelectorAll(".info-header-tab"),
     info = document.querySelector(".info-header"),
