@@ -191,7 +191,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     //Slider
 
-    let slideIndex = 1,
+     let slideIndex = 1,
     slides = document.querySelectorAll('.slider-item'),
     prev = document.querySelector('.prev'),
     next = document.querySelector('.next'),
