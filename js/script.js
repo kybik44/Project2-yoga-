@@ -36,5 +36,84 @@ let infoTab = document.querySelectorAll(".info-header-tab"),
             }
         });
 
+
+
+        let deadLine = "2020-11-21";
+
+        function getTimeRemaining(endtime){
+            let t = Date.parse(endtime) - Date.parse(new Date()),
+                seconds = Math.floor((t/1000) % 60),
+                minutes = Math.floor((t/1000/60) % 60),
+                hours = Math.floor((t/(1000*60*60)));
+
+                return {
+                    'total' : t,
+                    'hours' : hours,
+                    'minutes' : minutes,
+                    'seconds' : seconds
+                                };
+        }
+
+        function setClock(id, endtime){
+            let timer = document.getElementById(id),
+                hours = timer.querySelector('.hours'),
+                minutes = timer.querySelector(".minutes"),
+                seconds = timer.querySelector(".seconds"),
+                timeInterval = setInterval(updateClock, 1000);
+
+                function updateClock() {
+                    let t = getTimeRemaining(endtime);
+        
+                    function addZero(num){
+                                if(num <= 9) {
+                                    return '0' + num;
+                                } else return num;
+                            };
+        
+                    hours.textContent = addZero(t.hours);
+                    minutes.textContent = addZero(t.minutes);
+                    seconds.textContent = addZero(t.seconds);
+        
+                    if (t.total <= 0) {
+                        clearInterval(timeInterval);
+                        hours.textContent = '00';
+                        minutes.textContent = '00';
+                        seconds.textContent = '00';
+                    }
+                }
+            }
+
+
+        setClock('timer', deadLine);
+
+            //Modal
+
+let popup = document.querySelector(".overlay"),
+    close_button =  document.querySelector(".popup-close"),
+    more = document.querySelector(".more");
+
+            more.addEventListener('click', function(){
+                popup.style.display = 'block';
+                this.classList.add("more-splash");
+                document.body.style.overflow = 'hidden';
+            });
+
+            close_button.addEventListener('click', function(){
+                popup.style.display = '';
+                more.classList.remove("more-splash");
+                document.body.style.overflow = '';
+
+
+            });
+
 });
 
+// Второе задание
+
+// let age = document.getElementById('age');
+ 
+// function showUser(surname, name) {
+//          alert("Пользователь " + surname + " " + name + ", его возраст " + this.value);
+// }
+ 
+// showUser.apply(age, ["Горький","Максим"]);
